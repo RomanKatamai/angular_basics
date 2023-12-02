@@ -1,0 +1,96 @@
+<div class="container">
+  <div class="sidebar"></div>
+  <form class="card" [formGroup]="form" (ngSubmit)="submit()">
+
+    <h1>Оформлення заяви</h1>
+    <hr>
+    <div>
+      <div class="form-control">
+        <label>Виберіть що вам потрібно:</label>
+        <div class="radio-button">
+          <div class="card-radio">
+            <input type="radio" name="repairOrModernization" value="Модернізація" formControlName="repairOrModernization">
+            <label>Ремонт</label>
+          </div>
+          <div class="card-radio">
+            <input type="radio" name="repairOrModernization" value="Ремонт" formControlName="repairOrModernization">
+            <label>Модернізація</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-control">
+        <label>Терміновий ремонт:</label>
+        <div class="radio-button">
+          <div class="card-radio">
+            <input type="radio" name="urgentRepair" value="Так" formControlName="urgentRepair">
+            <label>Так</label>
+          </div>
+          <div class="card-radio">
+            <input type="radio" name="urgentRepair" value="Ні" formControlName="urgentRepair">
+            <label>Ні</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-control">
+        <label>Отримувати повідомлення про готовність замовлення:</label>
+        <div class="radio-button">
+          <div class="card-radio">
+            <input type="radio" name="orderReadiness" value="Так" formControlName="orderReadiness">
+            <label>Так</label>
+          </div>
+          <div class="card-radio">
+            <input type="radio" name="orderReadiness" value="Ні" formControlName="orderReadiness">
+            <label>Ні</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-control">
+        <label>Вкажіть дату завершення ремонту(за потреби)</label>
+        <input type="date" formControlName="date">
+      </div>
+
+      <div class="form-control">
+        <label>Виберіть спосіб оплати транспортних послуг</label>
+        <select formControlName="paymentOfTransport">
+          <option value=" "></option>
+          <option value="Оплата при отриманні товару(готівка)">Оплата при отриманні товару(готівка)</option>
+          <option value="Оплата картою при отримані товару">Оплата картою при отримані товару</option>
+        </select>
+      </div>
+
+
+
+      <div class="form-control">
+        <label>Виберіть місце виконання ремонту</label>
+        <select formControlName="place">
+          <option value="На місці">На місці</option>
+          <option value="Стаціонарно">Стаціонарно</option>
+        </select>
+        <div class="validation">
+          <small *ngIf="form.controls['place'].touched && form.controls['place'].invalid">Поле не може бути пустим</small>
+        </div>
+      </div>
+
+      <div class="form-control">
+        <label>Виберіть спосіб доставки</label>
+        <select formControlName="delivery">
+          <option value="Не потрібно">Не потрібно</option>
+          <option value="На адрес(вказаний по телефоному дзвінку)">На адрес(вказаний по телефоному дзвінку)</option>
+        </select>
+        <div class="validation">
+          <small *ngIf="form.controls['delivery'].touched && form.controls['delivery'].invalid">
+            Поле не може бути пустим
+          </small>
+        </div>
+      </div>
+    </div>
+    <button class="btn" type="submit" [disabled]="form.invalid || form.pending">Відправити</button>
+    <button class="btn" type="button">Скасувати оформлення</button>
+  </form>
+</div>
+
+
+
